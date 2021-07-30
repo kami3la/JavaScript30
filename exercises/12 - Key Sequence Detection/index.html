@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="https://www.cornify.com/js/cornify.js"></script>
+</head>
+
+<body>
+<style>
+  html {
+    box-sizing: border-box;
+    font-family: 'helvetica neue';
+    font-size: 35px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+  }
+
+  .item {
+    margin: 50px;
+    text-align: center;
+  }
+
+  .item > p {
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
+
+  <div class="item">
+    <p>Write 'unicorn' and see what happens !</p>
+  </div>
+
+<script>
+  const pressed = [];
+  const secretCode = 'unicorn';
+
+  window.addEventListener('keyup', (e) => {
+    pressed.push(e.key);
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+    console.log(pressed);
+    if (pressed.join('').includes(secretCode)) {
+      cornify_add();
+    }
+  })
+</script>
+</body>
+</html>
